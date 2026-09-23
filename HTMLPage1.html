@@ -1,10 +1,11 @@
+```html
 <!DOCTYPE html>
 <html lang="he">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Random YouTube Clip</title>
+    <title>נגוש שתמיד תחייכי כל החיים ❤️</title>
 
     <style>
         body {
@@ -21,16 +22,6 @@
             font-size: 32px;
         }
 
-        /* Hebrew message */
-        #message {
-            font-family: "Segoe UI", sans-serif;
-            font-size: 28px;
-            font-weight: 600;
-            margin-top: 25px;
-            direction: rtl;
-        }
-
-        /* Heart button */
         .heart-button {
             width: 90px;
             height: 90px;
@@ -82,27 +73,16 @@
         ❤️
     </button>
 
-    <div id="message">
-        נגוש שתמיד תחייכי כל החיים ❤️
-    </div>
-
     <div id="player-container">
         <div id="player"></div>
     </div>
 
     <div id="clipInfo"></div>
 
-
     <script src="https://www.youtube.com/iframe_api"></script>
 
     <script>
-
-        // =========================
-        // ALL CLIPS
-        // =========================
-
         const videos = [
-
             // VIDEO 1
             { id: "iV2Syj2OwPQ", start: 93, end: 120 },
             { id: "iV2Syj2OwPQ", start: 103, end: 119 },
@@ -277,17 +257,14 @@
             { id: "vo379QxPNko", start: 2434, end: 2457 }
         ];
 
-
         let player = null;
         let selectedVideo = null;
         let stopTimer = null;
         let youtubeReady = false;
 
-
         function onYouTubeIframeAPIReady() {
             youtubeReady = true;
         }
-
 
         function chooseRandomVideo() {
 
@@ -301,19 +278,16 @@
 
             selectedVideo = videos[randomIndex];
 
-
             if (stopTimer) {
                 clearInterval(stopTimer);
                 stopTimer = null;
             }
-
 
             document.getElementById("clipInfo").innerText =
                 "Clip: " +
                 formatTime(selectedVideo.start) +
                 " - " +
                 formatTime(selectedVideo.end);
-
 
             if (!player) {
 
@@ -355,9 +329,7 @@
             } else {
 
                 player.loadVideoById({
-
                     videoId: selectedVideo.id,
-
                     startSeconds: selectedVideo.start
                 });
 
@@ -366,7 +338,6 @@
                 }, 500);
             }
         }
-
 
         function startStopTimer() {
 
@@ -398,7 +369,6 @@
             }, 100);
         }
 
-
         function formatTime(seconds) {
 
             const minutes =
@@ -414,8 +384,8 @@
                     .padStart(2, "0")
             );
         }
-
     </script>
 
 </body>
 </html>
+```
