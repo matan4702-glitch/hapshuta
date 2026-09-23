@@ -11,7 +11,9 @@
             font-family: Arial, sans-serif;
             text-align: center;
             margin-top: 50px;
-            background: #f5f5f5;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #6C2BD9, #8B5CF6);
+            color: white;
         }
 
         h1 {
@@ -24,6 +26,13 @@
             cursor: pointer;
             border: none;
             border-radius: 8px;
+            background: white;
+            color: #6C2BD9;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background: #f0eaff;
         }
 
         #player-container {
@@ -95,7 +104,6 @@
             { id: "iV2Syj2OwPQ", start: 1526, end: 1570 },
             { id: "iV2Syj2OwPQ", start: 1586, end: 1625 },
 
-
             // VIDEO 2
             { id: "3ay6qbpZRUA", start: 227, end: 237 },
             { id: "3ay6qbpZRUA", start: 266, end: 293 },
@@ -108,7 +116,6 @@
             { id: "3ay6qbpZRUA", start: 1636, end: 1660 },
             { id: "3ay6qbpZRUA", start: 1675, end: 1715 },
             { id: "3ay6qbpZRUA", start: 1755, end: 1770 },
-
 
             // VIDEO 3
             { id: "zTenMqEixVo", start: 60, end: 75 },
@@ -137,7 +144,6 @@
             { id: "zTenMqEixVo", start: 1750, end: 1780 },
             { id: "zTenMqEixVo", start: 1784, end: 1811 },
 
-
             // VIDEO 4
             { id: "oRFeZUO5GVw", start: 24, end: 121 },
             { id: "oRFeZUO5GVw", start: 170, end: 244 },
@@ -161,7 +167,6 @@
             { id: "oRFeZUO5GVw", start: 1740, end: 1775 },
             { id: "oRFeZUO5GVw", start: 1782, end: 1813 },
 
-
             // VIDEO 5
             { id: "sVVCteW9Z8g", start: 60, end: 79 },
             { id: "sVVCteW9Z8g", start: 102, end: 142 },
@@ -177,7 +182,6 @@
             { id: "sVVCteW9Z8g", start: 1600, end: 1635 },
             { id: "sVVCteW9Z8g", start: 1713, end: 1740 },
             { id: "sVVCteW9Z8g", start: 1778, end: 1808 },
-
 
             // VIDEO 6
             { id: "meTc4AmbZ6E", start: 8, end: 38 },
@@ -199,7 +203,6 @@
             { id: "meTc4AmbZ6E", start: 1608, end: 1624 },
             { id: "meTc4AmbZ6E", start: 1733, end: 1785 },
 
-
             // VIDEO 7
             { id: "_1KUmupf4zY", start: 5, end: 60 },
             { id: "_1KUmupf4zY", start: 89, end: 191 },
@@ -209,7 +212,6 @@
             { id: "_1KUmupf4zY", start: 1065, end: 1125 },
             { id: "_1KUmupf4zY", start: 1125, end: 1164 },
             { id: "_1KUmupf4zY", start: 1278, end: 1443 },
-
 
             // VIDEO 8
             { id: "wWymdnwuEns", start: 7, end: 26 },
@@ -228,7 +230,6 @@
             { id: "wWymdnwuEns", start: 1468, end: 1520 },
             { id: "wWymdnwuEns", start: 1593, end: 1626 },
             { id: "wWymdnwuEns", start: 1940, end: 2031 },
-
 
             // VIDEO 9
             { id: "vo379QxPNko", start: 10, end: 200 },
@@ -252,26 +253,16 @@
         ];
 
 
-        // =========================
-        // YOUTUBE PLAYER
-        // =========================
-
         let player = null;
         let selectedVideo = null;
         let stopTimer = null;
         let youtubeReady = false;
 
 
-        // This function is automatically called
-        // when the YouTube API finishes loading.
         function onYouTubeIframeAPIReady() {
             youtubeReady = true;
         }
 
-
-        // =========================
-        // CHOOSE RANDOM CLIP
-        // =========================
 
         function chooseRandomVideo() {
 
@@ -286,24 +277,18 @@
             selectedVideo = videos[randomIndex];
 
 
-            // Stop previous timer
             if (stopTimer) {
                 clearInterval(stopTimer);
                 stopTimer = null;
             }
 
 
-            // Display clip information
             document.getElementById("clipInfo").innerText =
                 "Clip: " +
                 formatTime(selectedVideo.start) +
                 " - " +
                 formatTime(selectedVideo.end);
 
-
-            // =========================
-            // FIRST TIME
-            // =========================
 
             if (!player) {
 
@@ -330,7 +315,6 @@
                             startStopTimer();
                         },
 
-
                         onStateChange: function(event) {
 
                             if (
@@ -343,13 +327,7 @@
                     }
                 });
 
-            }
-
-            // =========================
-            // PLAYER ALREADY EXISTS
-            // =========================
-
-            else {
+            } else {
 
                 player.loadVideoById({
 
@@ -358,19 +336,12 @@
                     startSeconds: selectedVideo.start
                 });
 
-
                 setTimeout(function() {
-
                     startStopTimer();
-
                 }, 500);
             }
         }
 
-
-        // =========================
-        // STOP AT END TIME
-        // =========================
 
         function startStopTimer() {
 
@@ -378,17 +349,14 @@
                 clearInterval(stopTimer);
             }
 
-
             stopTimer = setInterval(function() {
 
                 if (!player || !selectedVideo) {
                     return;
                 }
 
-
                 const currentTime =
                     player.getCurrentTime();
-
 
                 if (
                     currentTime >=
@@ -406,10 +374,6 @@
         }
 
 
-        // =========================
-        // FORMAT TIME
-        // =========================
-
         function formatTime(seconds) {
 
             const minutes =
@@ -417,7 +381,6 @@
 
             const remainingSeconds =
                 seconds % 60;
-
 
             return (
                 minutes +
