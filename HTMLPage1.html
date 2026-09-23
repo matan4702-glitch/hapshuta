@@ -1,11 +1,10 @@
-```html
 <!DOCTYPE html>
 <html lang="he">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>נגוש שלי שתמיד תחייכי כל החיים ❤️</title>
+    <title>נגוש שתמיד תחייכי כל החיים ❤️</title>
 
     <style>
         body {
@@ -20,6 +19,7 @@
         h1 {
             margin-bottom: 25px;
             font-size: 32px;
+            direction: rtl;
         }
 
         .heart-button {
@@ -64,7 +64,7 @@
 
 <body>
 
-    <h1>Random YouTube Clip</h1>
+    <h1>נגוש שתמיד תחייכי כל החיים ❤️</h1>
 
     <button
         class="heart-button"
@@ -83,6 +83,7 @@
 
     <script>
         const videos = [
+
             // VIDEO 1
             { id: "iV2Syj2OwPQ", start: 93, end: 120 },
             { id: "iV2Syj2OwPQ", start: 103, end: 119 },
@@ -329,7 +330,9 @@
             } else {
 
                 player.loadVideoById({
+
                     videoId: selectedVideo.id,
+
                     startSeconds: selectedVideo.start
                 });
 
