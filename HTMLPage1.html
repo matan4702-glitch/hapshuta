@@ -3,27 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Random Video</title>
+    <title>Random YouTube Clip</title>
 
     <style>
         body {
             font-family: Arial, sans-serif;
-            padding: 40px;
+            text-align: center;
+            margin-top: 50px;
         }
 
         button {
             padding: 12px 24px;
-            font-size: 16px;
+            font-size: 18px;
             cursor: pointer;
         }
 
         #result {
-            margin-top: 20px;
+            margin-top: 25px;
+            font-size: 16px;
+            word-break: break-all;
         }
     </style>
 </head>
 
 <body>
+
+    <h1>Random YouTube Clip</h1>
 
     <button onclick="chooseRandomVideo()">
         Choose Random Video
@@ -31,14 +36,15 @@
 
     <div id="result"></div>
 
+
     <script>
 
         const videos = [
 
-            // ==============================
+            // =====================================================
             // VIDEO 1
-            // iV2Syj2OwPQ
-            // ==============================
+            // https://www.youtube.com/watch?v=iV2Syj2OwPQ
+            // =====================================================
 
             // 1:33 - 2:00
             {
@@ -209,10 +215,10 @@
             },
 
 
-            // ==============================
+            // =====================================================
             // VIDEO 2
-            // 3ay6qbpZRUA
-            // ==============================
+            // https://www.youtube.com/watch?v=3ay6qbpZRUA
+            // =====================================================
 
             // 3:47 - 3:55
             {
@@ -289,6 +295,187 @@
                 url: "https://www.youtube.com/embed/3ay6qbpZRUA",
                 start: 1755,
                 end: 1770
+            },
+
+
+            // =====================================================
+            // VIDEO 3
+            // https://www.youtube.com/watch?v=zTenMqEixVo
+            // =====================================================
+
+            // 1:00 - 1:15
+            {
+                url: "https://www.youtube.com/embed/zTenMqEixVo",
+                start: 60,
+                end: 75
+            },
+
+            // 1:31 - 1:40
+            {
+                url: "https://www.youtube.com/embed/zTenMqEixVo",
+                start: 91,
+                end: 100
+            },
+
+            // 1:40 - 1:49
+            {
+                url: "https://www.youtube.com/embed/zTenMqEixVo",
+                start: 100,
+                end: 109
+            },
+
+            // 1:53 - 2:57
+            {
+                url: "https://www.youtube.com/embed/zTenMqEixVo",
+                start: 113,
+                end: 177
+            },
+
+            // 2:57 - 3:13
+            {
+                url: "https://www.youtube.com/embed/zTenMqEixVo",
+                start: 177,
+                end: 193
+            },
+
+            // 3:25 - 3:39
+            {
+                url: "https://www.youtube.com/embed/zTenMqEixVo",
+                start: 205,
+                end: 219
+            },
+
+            // 6:31 - 7:15
+            {
+                url: "https://www.youtube.com/embed/zTenMqEixVo",
+                start: 391,
+                end: 435
+            },
+
+            // 8:45 - 9:15
+            {
+                url: "https://www.youtube.com/embed/zTenMqEixVo",
+                start: 525,
+                end: 555
+            },
+
+            // 9:14 - 10:07
+            {
+                url: "https://www.youtube.com/embed/zTenMqEixVo",
+                start: 554,
+                end: 607
+            },
+
+            // 10:07 - 10:17
+            {
+                url: "https://www.youtube.com/embed/zTenMqEixVo",
+                start: 607,
+                end: 617
+            },
+
+            // 11:00 - 11:32
+            {
+                url: "https://www.youtube.com/embed/zTenMqEixVo",
+                start: 660,
+                end: 692
+            },
+
+            // 11:39 - 12:07
+            {
+                url: "https://www.youtube.com/embed/zTenMqEixVo",
+                start: 699,
+                end: 727
+            },
+
+            // 12:08 - 12:16
+            {
+                url: "https://www.youtube.com/embed/zTenMqEixVo",
+                start: 728,
+                end: 736
+            },
+
+            // 13:18 - 14:08
+            {
+                url: "https://www.youtube.com/embed/zTenMqEixVo",
+                start: 798,
+                end: 848
+            },
+
+            // 14:25 - 14:50
+            {
+                url: "https://www.youtube.com/embed/zTenMqEixVo",
+                start: 865,
+                end: 890
+            },
+
+            // 14:53 - 15:10
+            {
+                url: "https://www.youtube.com/embed/zTenMqEixVo",
+                start: 893,
+                end: 910
+            },
+
+            // 15:45 - 16:30
+            {
+                url: "https://www.youtube.com/embed/zTenMqEixVo",
+                start: 945,
+                end: 990
+            },
+
+            // 17:00 - 17:32
+            {
+                url: "https://www.youtube.com/embed/zTenMqEixVo",
+                start: 1020,
+                end: 1052
+            },
+
+            // 18:27 - 18:46
+            {
+                url: "https://www.youtube.com/embed/zTenMqEixVo",
+                start: 1107,
+                end: 1126
+            },
+
+            // 18:51 - 19:10
+            {
+                url: "https://www.youtube.com/embed/zTenMqEixVo",
+                start: 1131,
+                end: 1150
+            },
+
+            // 20:20 - 21:07
+            {
+                url: "https://www.youtube.com/embed/zTenMqEixVo",
+                start: 1220,
+                end: 1267
+            },
+
+            // 21:27 - 23:00
+            {
+                url: "https://www.youtube.com/embed/zTenMqEixVo",
+                start: 1287,
+                end: 1380
+            },
+
+            // 25:12 - 26:30
+            {
+                url: "https://www.youtube.com/embed/zTenMqEixVo",
+                start: 1512,
+                end: 1590
+            },
+
+            // 29:10 - 29:40
+            {
+                url: "https://www.youtube.com/embed/zTenMqEixVo",
+                start: 1750,
+                end: 1780
+            },
+
+            // 29:44 - 30:11
+            {
+                url: "https://www.youtube.com/embed/zTenMqEixVo",
+                start: 1784,
+                end: 1811
             }
         ];
 
@@ -302,8 +489,10 @@
 
             const videoUrl =
                 selectedVideo.url +
-                "?start=" + selectedVideo.start +
-                "&end=" + selectedVideo.end;
+                "?start=" +
+                selectedVideo.start +
+                "&end=" +
+                selectedVideo.end;
 
             document.getElementById("result").innerHTML = `
                     <a href="${videoUrl}" target="_blank">
