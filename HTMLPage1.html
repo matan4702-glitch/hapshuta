@@ -18,10 +18,20 @@
             cursor: pointer;
         }
 
-        #result {
-            margin-top: 25px;
+        #player-container {
+            margin: 25px auto 0;
+            width: 90%;
+            max-width: 900px;
+        }
+
+        #player {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+        }
+
+        #clipInfo {
+            margin-top: 15px;
             font-size: 16px;
-            word-break: break-all;
         }
     </style>
 </head>
@@ -34,7 +44,15 @@
         Choose Random Video
     </button>
 
-    <div id="result"></div>
+    <div id="player-container">
+        <div id="player"></div>
+    </div>
+
+    <div id="clipInfo"></div>
+
+
+    <!-- YouTube IFrame API -->
+    <script src="https://www.youtube.com/iframe_api"></script>
 
     <script>
 
@@ -45,30 +63,30 @@
             // https://www.youtube.com/watch?v=iV2Syj2OwPQ
             // =====================================================
 
-            { url: "https://www.youtube.com/embed/iV2Syj2OwPQ", start: 93, end: 120 },
-            { url: "https://www.youtube.com/embed/iV2Syj2OwPQ", start: 103, end: 119 },
-            { url: "https://www.youtube.com/embed/iV2Syj2OwPQ", start: 119, end: 128 },
-            { url: "https://www.youtube.com/embed/iV2Syj2OwPQ", start: 185, end: 192 },
-            { url: "https://www.youtube.com/embed/iV2Syj2OwPQ", start: 192, end: 245 },
-            { url: "https://www.youtube.com/embed/iV2Syj2OwPQ", start: 245, end: 273 },
-            { url: "https://www.youtube.com/embed/iV2Syj2OwPQ", start: 284, end: 312 },
-            { url: "https://www.youtube.com/embed/iV2Syj2OwPQ", start: 312, end: 323 },
-            { url: "https://www.youtube.com/embed/iV2Syj2OwPQ", start: 373, end: 382 },
-            { url: "https://www.youtube.com/embed/iV2Syj2OwPQ", start: 406, end: 415 },
-            { url: "https://www.youtube.com/embed/iV2Syj2OwPQ", start: 425, end: 432 },
-            { url: "https://www.youtube.com/embed/iV2Syj2OwPQ", start: 456, end: 472 },
-            { url: "https://www.youtube.com/embed/iV2Syj2OwPQ", start: 520, end: 565 },
-            { url: "https://www.youtube.com/embed/iV2Syj2OwPQ", start: 653, end: 687 },
-            { url: "https://www.youtube.com/embed/iV2Syj2OwPQ", start: 760, end: 774 },
-            { url: "https://www.youtube.com/embed/iV2Syj2OwPQ", start: 865, end: 876 },
-            { url: "https://www.youtube.com/embed/iV2Syj2OwPQ", start: 897, end: 929 },
-            { url: "https://www.youtube.com/embed/iV2Syj2OwPQ", start: 994, end: 1001 },
-            { url: "https://www.youtube.com/embed/iV2Syj2OwPQ", start: 1049, end: 1066 },
-            { url: "https://www.youtube.com/embed/iV2Syj2OwPQ", start: 1094, end: 1112 },
-            { url: "https://www.youtube.com/embed/iV2Syj2OwPQ", start: 1114, end: 1132 },
-            { url: "https://www.youtube.com/embed/iV2Syj2OwPQ", start: 1194, end: 1272 },
-            { url: "https://www.youtube.com/embed/iV2Syj2OwPQ", start: 1526, end: 1570 },
-            { url: "https://www.youtube.com/embed/iV2Syj2OwPQ", start: 1586, end: 1625 },
+            { id: "iV2Syj2OwPQ", start: 93, end: 120 },
+            { id: "iV2Syj2OwPQ", start: 103, end: 119 },
+            { id: "iV2Syj2OwPQ", start: 119, end: 128 },
+            { id: "iV2Syj2OwPQ", start: 185, end: 192 },
+            { id: "iV2Syj2OwPQ", start: 192, end: 245 },
+            { id: "iV2Syj2OwPQ", start: 245, end: 273 },
+            { id: "iV2Syj2OwPQ", start: 284, end: 312 },
+            { id: "iV2Syj2OwPQ", start: 312, end: 323 },
+            { id: "iV2Syj2OwPQ", start: 373, end: 382 },
+            { id: "iV2Syj2OwPQ", start: 406, end: 415 },
+            { id: "iV2Syj2OwPQ", start: 425, end: 432 },
+            { id: "iV2Syj2OwPQ", start: 456, end: 472 },
+            { id: "iV2Syj2OwPQ", start: 520, end: 565 },
+            { id: "iV2Syj2OwPQ", start: 653, end: 687 },
+            { id: "iV2Syj2OwPQ", start: 760, end: 774 },
+            { id: "iV2Syj2OwPQ", start: 865, end: 876 },
+            { id: "iV2Syj2OwPQ", start: 897, end: 929 },
+            { id: "iV2Syj2OwPQ", start: 994, end: 1001 },
+            { id: "iV2Syj2OwPQ", start: 1049, end: 1066 },
+            { id: "iV2Syj2OwPQ", start: 1094, end: 1112 },
+            { id: "iV2Syj2OwPQ", start: 1114, end: 1132 },
+            { id: "iV2Syj2OwPQ", start: 1194, end: 1272 },
+            { id: "iV2Syj2OwPQ", start: 1526, end: 1570 },
+            { id: "iV2Syj2OwPQ", start: 1586, end: 1625 },
 
 
             // =====================================================
@@ -76,17 +94,17 @@
             // https://www.youtube.com/watch?v=3ay6qbpZRUA
             // =====================================================
 
-            { url: "https://www.youtube.com/embed/3ay6qbpZRUA", start: 227, end: 237 },
-            { url: "https://www.youtube.com/embed/3ay6qbpZRUA", start: 266, end: 293 },
-            { url: "https://www.youtube.com/embed/3ay6qbpZRUA", start: 647, end: 668 },
-            { url: "https://www.youtube.com/embed/3ay6qbpZRUA", start: 690, end: 716 },
-            { url: "https://www.youtube.com/embed/3ay6qbpZRUA", start: 740, end: 864 },
-            { url: "https://www.youtube.com/embed/3ay6qbpZRUA", start: 875, end: 900 },
-            { url: "https://www.youtube.com/embed/3ay6qbpZRUA", start: 1055, end: 1139 },
-            { url: "https://www.youtube.com/embed/3ay6qbpZRUA", start: 1160, end: 1184 },
-            { url: "https://www.youtube.com/embed/3ay6qbpZRUA", start: 1636, end: 1660 },
-            { url: "https://www.youtube.com/embed/3ay6qbpZRUA", start: 1675, end: 1715 },
-            { url: "https://www.youtube.com/embed/3ay6qbpZRUA", start: 1755, end: 1770 },
+            { id: "3ay6qbpZRUA", start: 227, end: 237 },
+            { id: "3ay6qbpZRUA", start: 266, end: 293 },
+            { id: "3ay6qbpZRUA", start: 647, end: 668 },
+            { id: "3ay6qbpZRUA", start: 690, end: 716 },
+            { id: "3ay6qbpZRUA", start: 740, end: 864 },
+            { id: "3ay6qbpZRUA", start: 875, end: 900 },
+            { id: "3ay6qbpZRUA", start: 1055, end: 1139 },
+            { id: "3ay6qbpZRUA", start: 1160, end: 1184 },
+            { id: "3ay6qbpZRUA", start: 1636, end: 1660 },
+            { id: "3ay6qbpZRUA", start: 1675, end: 1715 },
+            { id: "3ay6qbpZRUA", start: 1755, end: 1770 },
 
 
             // =====================================================
@@ -94,31 +112,31 @@
             // https://www.youtube.com/watch?v=zTenMqEixVo
             // =====================================================
 
-            { url: "https://www.youtube.com/embed/zTenMqEixVo", start: 60, end: 75 },
-            { url: "https://www.youtube.com/embed/zTenMqEixVo", start: 91, end: 100 },
-            { url: "https://www.youtube.com/embed/zTenMqEixVo", start: 100, end: 109 },
-            { url: "https://www.youtube.com/embed/zTenMqEixVo", start: 113, end: 177 },
-            { url: "https://www.youtube.com/embed/zTenMqEixVo", start: 177, end: 193 },
-            { url: "https://www.youtube.com/embed/zTenMqEixVo", start: 205, end: 219 },
-            { url: "https://www.youtube.com/embed/zTenMqEixVo", start: 391, end: 435 },
-            { url: "https://www.youtube.com/embed/zTenMqEixVo", start: 525, end: 555 },
-            { url: "https://www.youtube.com/embed/zTenMqEixVo", start: 554, end: 608 },
-            { url: "https://www.youtube.com/embed/zTenMqEixVo", start: 607, end: 617 },
-            { url: "https://www.youtube.com/embed/zTenMqEixVo", start: 660, end: 692 },
-            { url: "https://www.youtube.com/embed/zTenMqEixVo", start: 699, end: 727 },
-            { url: "https://www.youtube.com/embed/zTenMqEixVo", start: 728, end: 736 },
-            { url: "https://www.youtube.com/embed/zTenMqEixVo", start: 798, end: 848 },
-            { url: "https://www.youtube.com/embed/zTenMqEixVo", start: 865, end: 890 },
-            { url: "https://www.youtube.com/embed/zTenMqEixVo", start: 893, end: 910 },
-            { url: "https://www.youtube.com/embed/zTenMqEixVo", start: 945, end: 990 },
-            { url: "https://www.youtube.com/embed/zTenMqEixVo", start: 1020, end: 1052 },
-            { url: "https://www.youtube.com/embed/zTenMqEixVo", start: 1107, end: 1126 },
-            { url: "https://www.youtube.com/embed/zTenMqEixVo", start: 1131, end: 1150 },
-            { url: "https://www.youtube.com/embed/zTenMqEixVo", start: 1220, end: 1267 },
-            { url: "https://www.youtube.com/embed/zTenMqEixVo", start: 1287, end: 1380 },
-            { url: "https://www.youtube.com/embed/zTenMqEixVo", start: 1512, end: 1590 },
-            { url: "https://www.youtube.com/embed/zTenMqEixVo", start: 1750, end: 1780 },
-            { url: "https://www.youtube.com/embed/zTenMqEixVo", start: 1784, end: 1811 },
+            { id: "zTenMqEixVo", start: 60, end: 75 },
+            { id: "zTenMqEixVo", start: 91, end: 100 },
+            { id: "zTenMqEixVo", start: 100, end: 109 },
+            { id: "zTenMqEixVo", start: 113, end: 177 },
+            { id: "zTenMqEixVo", start: 177, end: 193 },
+            { id: "zTenMqEixVo", start: 205, end: 219 },
+            { id: "zTenMqEixVo", start: 391, end: 435 },
+            { id: "zTenMqEixVo", start: 525, end: 555 },
+            { id: "zTenMqEixVo", start: 554, end: 608 },
+            { id: "zTenMqEixVo", start: 607, end: 617 },
+            { id: "zTenMqEixVo", start: 660, end: 692 },
+            { id: "zTenMqEixVo", start: 699, end: 727 },
+            { id: "zTenMqEixVo", start: 728, end: 736 },
+            { id: "zTenMqEixVo", start: 798, end: 848 },
+            { id: "zTenMqEixVo", start: 865, end: 890 },
+            { id: "zTenMqEixVo", start: 893, end: 910 },
+            { id: "zTenMqEixVo", start: 945, end: 990 },
+            { id: "zTenMqEixVo", start: 1020, end: 1052 },
+            { id: "zTenMqEixVo", start: 1107, end: 1126 },
+            { id: "zTenMqEixVo", start: 1131, end: 1150 },
+            { id: "zTenMqEixVo", start: 1220, end: 1267 },
+            { id: "zTenMqEixVo", start: 1287, end: 1380 },
+            { id: "zTenMqEixVo", start: 1512, end: 1590 },
+            { id: "zTenMqEixVo", start: 1750, end: 1780 },
+            { id: "zTenMqEixVo", start: 1784, end: 1811 },
 
 
             // =====================================================
@@ -126,27 +144,27 @@
             // https://www.youtube.com/watch?v=oRFeZUO5GVw
             // =====================================================
 
-            { url: "https://www.youtube.com/embed/oRFeZUO5GVw", start: 24, end: 121 },
-            { url: "https://www.youtube.com/embed/oRFeZUO5GVw", start: 170, end: 244 },
-            { url: "https://www.youtube.com/embed/oRFeZUO5GVw", start: 419, end: 439 },
-            { url: "https://www.youtube.com/embed/oRFeZUO5GVw", start: 532, end: 577 },
-            { url: "https://www.youtube.com/embed/oRFeZUO5GVw", start: 577, end: 613 },
-            { url: "https://www.youtube.com/embed/oRFeZUO5GVw", start: 660, end: 675 },
-            { url: "https://www.youtube.com/embed/oRFeZUO5GVw", start: 699, end: 725 },
-            { url: "https://www.youtube.com/embed/oRFeZUO5GVw", start: 791, end: 840 },
-            { url: "https://www.youtube.com/embed/oRFeZUO5GVw", start: 893, end: 908 },
-            { url: "https://www.youtube.com/embed/oRFeZUO5GVw", start: 953, end: 963 },
-            { url: "https://www.youtube.com/embed/oRFeZUO5GVw", start: 964, end: 988 },
-            { url: "https://www.youtube.com/embed/oRFeZUO5GVw", start: 990, end: 1052 },
-            { url: "https://www.youtube.com/embed/oRFeZUO5GVw", start: 1068, end: 1110 },
-            { url: "https://www.youtube.com/embed/oRFeZUO5GVw", start: 1152, end: 1267 },
-            { url: "https://www.youtube.com/embed/oRFeZUO5GVw", start: 1272, end: 1310 },
-            { url: "https://www.youtube.com/embed/oRFeZUO5GVw", start: 1311, end: 1483 },
-            { url: "https://www.youtube.com/embed/oRFeZUO5GVw", start: 1510, end: 1589 },
-            { url: "https://www.youtube.com/embed/oRFeZUO5GVw", start: 1590, end: 1627 },
-            { url: "https://www.youtube.com/embed/oRFeZUO5GVw", start: 1667, end: 1684 },
-            { url: "https://www.youtube.com/embed/oRFeZUO5GVw", start: 1740, end: 1775 },
-            { url: "https://www.youtube.com/embed/oRFeZUO5GVw", start: 1782, end: 1813 },
+            { id: "oRFeZUO5GVw", start: 24, end: 121 },
+            { id: "oRFeZUO5GVw", start: 170, end: 244 },
+            { id: "oRFeZUO5GVw", start: 419, end: 439 },
+            { id: "oRFeZUO5GVw", start: 532, end: 577 },
+            { id: "oRFeZUO5GVw", start: 577, end: 613 },
+            { id: "oRFeZUO5GVw", start: 660, end: 675 },
+            { id: "oRFeZUO5GVw", start: 699, end: 725 },
+            { id: "oRFeZUO5GVw", start: 791, end: 840 },
+            { id: "oRFeZUO5GVw", start: 893, end: 908 },
+            { id: "oRFeZUO5GVw", start: 953, end: 963 },
+            { id: "oRFeZUO5GVw", start: 964, end: 988 },
+            { id: "oRFeZUO5GVw", start: 990, end: 1052 },
+            { id: "oRFeZUO5GVw", start: 1068, end: 1110 },
+            { id: "oRFeZUO5GVw", start: 1152, end: 1267 },
+            { id: "oRFeZUO5GVw", start: 1272, end: 1310 },
+            { id: "oRFeZUO5GVw", start: 1311, end: 1483 },
+            { id: "oRFeZUO5GVw", start: 1510, end: 1589 },
+            { id: "oRFeZUO5GVw", start: 1590, end: 1627 },
+            { id: "oRFeZUO5GVw", start: 1667, end: 1684 },
+            { id: "oRFeZUO5GVw", start: 1740, end: 1775 },
+            { id: "oRFeZUO5GVw", start: 1782, end: 1813 },
 
 
             // =====================================================
@@ -154,20 +172,20 @@
             // https://www.youtube.com/watch?v=sVVCteW9Z8g
             // =====================================================
 
-            { url: "https://www.youtube.com/embed/sVVCteW9Z8g", start: 60, end: 79 },
-            { url: "https://www.youtube.com/embed/sVVCteW9Z8g", start: 102, end: 142 },
-            { url: "https://www.youtube.com/embed/sVVCteW9Z8g", start: 163, end: 193 },
-            { url: "https://www.youtube.com/embed/sVVCteW9Z8g", start: 193, end: 263 },
-            { url: "https://www.youtube.com/embed/sVVCteW9Z8g", start: 325, end: 579 },
-            { url: "https://www.youtube.com/embed/sVVCteW9Z8g", start: 580, end: 635 },
-            { url: "https://www.youtube.com/embed/sVVCteW9Z8g", start: 677, end: 698 },
-            { url: "https://www.youtube.com/embed/sVVCteW9Z8g", start: 995, end: 1095 },
-            { url: "https://www.youtube.com/embed/sVVCteW9Z8g", start: 1180, end: 1211 },
-            { url: "https://www.youtube.com/embed/sVVCteW9Z8g", start: 1352, end: 1515 },
-            { url: "https://www.youtube.com/embed/sVVCteW9Z8g", start: 1555, end: 1598 },
-            { url: "https://www.youtube.com/embed/sVVCteW9Z8g", start: 1600, end: 1635 },
-            { url: "https://www.youtube.com/embed/sVVCteW9Z8g", start: 1713, end: 1740 },
-            { url: "https://www.youtube.com/embed/sVVCteW9Z8g", start: 1778, end: 1808 },
+            { id: "sVVCteW9Z8g", start: 60, end: 79 },
+            { id: "sVVCteW9Z8g", start: 102, end: 142 },
+            { id: "sVVCteW9Z8g", start: 163, end: 193 },
+            { id: "sVVCteW9Z8g", start: 193, end: 263 },
+            { id: "sVVCteW9Z8g", start: 325, end: 579 },
+            { id: "sVVCteW9Z8g", start: 580, end: 635 },
+            { id: "sVVCteW9Z8g", start: 677, end: 698 },
+            { id: "sVVCteW9Z8g", start: 995, end: 1095 },
+            { id: "sVVCteW9Z8g", start: 1180, end: 1211 },
+            { id: "sVVCteW9Z8g", start: 1352, end: 1515 },
+            { id: "sVVCteW9Z8g", start: 1555, end: 1598 },
+            { id: "sVVCteW9Z8g", start: 1600, end: 1635 },
+            { id: "sVVCteW9Z8g", start: 1713, end: 1740 },
+            { id: "sVVCteW9Z8g", start: 1778, end: 1808 },
 
 
             // =====================================================
@@ -175,24 +193,24 @@
             // https://www.youtube.com/watch?v=meTc4AmbZ6E
             // =====================================================
 
-            { url: "https://www.youtube.com/embed/meTc4AmbZ6E", start: 8, end: 38 },
-            { url: "https://www.youtube.com/embed/meTc4AmbZ6E", start: 65, end: 185 },
-            { url: "https://www.youtube.com/embed/meTc4AmbZ6E", start: 191, end: 246 },
-            { url: "https://www.youtube.com/embed/meTc4AmbZ6E", start: 305, end: 388 },
-            { url: "https://www.youtube.com/embed/meTc4AmbZ6E", start: 390, end: 437 },
-            { url: "https://www.youtube.com/embed/meTc4AmbZ6E", start: 439, end: 590 },
-            { url: "https://www.youtube.com/embed/meTc4AmbZ6E", start: 678, end: 766 },
-            { url: "https://www.youtube.com/embed/meTc4AmbZ6E", start: 769, end: 795 },
-            { url: "https://www.youtube.com/embed/meTc4AmbZ6E", start: 845, end: 885 },
-            { url: "https://www.youtube.com/embed/meTc4AmbZ6E", start: 898, end: 915 },
-            { url: "https://www.youtube.com/embed/meTc4AmbZ6E", start: 1020, end: 1044 },
-            { url: "https://www.youtube.com/embed/meTc4AmbZ6E", start: 1070, end: 1140 },
-            { url: "https://www.youtube.com/embed/meTc4AmbZ6E", start: 1157, end: 1249 },
-            { url: "https://www.youtube.com/embed/meTc4AmbZ6E", start: 1319, end: 1396 },
-            { url: "https://www.youtube.com/embed/meTc4AmbZ6E", start: 1404, end: 1443 },
-            { url: "https://www.youtube.com/embed/meTc4AmbZ6E", start: 1443, end: 1474 },
-            { url: "https://www.youtube.com/embed/meTc4AmbZ6E", start: 1608, end: 1624 },
-            { url: "https://www.youtube.com/embed/meTc4AmbZ6E", start: 1733, end: 1785 },
+            { id: "meTc4AmbZ6E", start: 8, end: 38 },
+            { id: "meTc4AmbZ6E", start: 65, end: 185 },
+            { id: "meTc4AmbZ6E", start: 191, end: 246 },
+            { id: "meTc4AmbZ6E", start: 305, end: 388 },
+            { id: "meTc4AmbZ6E", start: 390, end: 437 },
+            { id: "meTc4AmbZ6E", start: 439, end: 590 },
+            { id: "meTc4AmbZ6E", start: 678, end: 766 },
+            { id: "meTc4AmbZ6E", start: 769, end: 795 },
+            { id: "meTc4AmbZ6E", start: 845, end: 885 },
+            { id: "meTc4AmbZ6E", start: 898, end: 915 },
+            { id: "meTc4AmbZ6E", start: 1020, end: 1044 },
+            { id: "meTc4AmbZ6E", start: 1070, end: 1140 },
+            { id: "meTc4AmbZ6E", start: 1157, end: 1249 },
+            { id: "meTc4AmbZ6E", start: 1319, end: 1396 },
+            { id: "meTc4AmbZ6E", start: 1404, end: 1443 },
+            { id: "meTc4AmbZ6E", start: 1443, end: 1474 },
+            { id: "meTc4AmbZ6E", start: 1608, end: 1624 },
+            { id: "meTc4AmbZ6E", start: 1733, end: 1785 },
 
 
             // =====================================================
@@ -200,14 +218,14 @@
             // https://www.youtube.com/watch?v=_1KUmupf4zY
             // =====================================================
 
-            { url: "https://www.youtube.com/embed/_1KUmupf4zY", start: 5, end: 60 },
-            { url: "https://www.youtube.com/embed/_1KUmupf4zY", start: 89, end: 191 },
-            { url: "https://www.youtube.com/embed/_1KUmupf4zY", start: 808, end: 882 },
-            { url: "https://www.youtube.com/embed/_1KUmupf4zY", start: 910, end: 976 },
-            { url: "https://www.youtube.com/embed/_1KUmupf4zY", start: 976, end: 1039 },
-            { url: "https://www.youtube.com/embed/_1KUmupf4zY", start: 1065, end: 1125 },
-            { url: "https://www.youtube.com/embed/_1KUmupf4zY", start: 1125, end: 1164 },
-            { url: "https://www.youtube.com/embed/_1KUmupf4zY", start: 1278, end: 1443 },
+            { id: "_1KUmupf4zY", start: 5, end: 60 },
+            { id: "_1KUmupf4zY", start: 89, end: 191 },
+            { id: "_1KUmupf4zY", start: 808, end: 882 },
+            { id: "_1KUmupf4zY", start: 910, end: 976 },
+            { id: "_1KUmupf4zY", start: 976, end: 1039 },
+            { id: "_1KUmupf4zY", start: 1065, end: 1125 },
+            { id: "_1KUmupf4zY", start: 1125, end: 1164 },
+            { id: "_1KUmupf4zY", start: 1278, end: 1443 },
 
 
             // =====================================================
@@ -215,22 +233,22 @@
             // https://www.youtube.com/watch?v=wWymdnwuEns
             // =====================================================
 
-            { url: "https://www.youtube.com/embed/wWymdnwuEns", start: 7, end: 26 },
-            { url: "https://www.youtube.com/embed/wWymdnwuEns", start: 28, end: 72 },
-            { url: "https://www.youtube.com/embed/wWymdnwuEns", start: 90, end: 156 },
-            { url: "https://www.youtube.com/embed/wWymdnwuEns", start: 170, end: 274 },
-            { url: "https://www.youtube.com/embed/wWymdnwuEns", start: 293, end: 507 },
-            { url: "https://www.youtube.com/embed/wWymdnwuEns", start: 685, end: 733 },
-            { url: "https://www.youtube.com/embed/wWymdnwuEns", start: 899, end: 926 },
-            { url: "https://www.youtube.com/embed/wWymdnwuEns", start: 927, end: 970 },
-            { url: "https://www.youtube.com/embed/wWymdnwuEns", start: 970, end: 1000 },
-            { url: "https://www.youtube.com/embed/wWymdnwuEns", start: 1020, end: 1080 },
-            { url: "https://www.youtube.com/embed/wWymdnwuEns", start: 1080, end: 1113 },
-            { url: "https://www.youtube.com/embed/wWymdnwuEns", start: 1250, end: 1275 },
-            { url: "https://www.youtube.com/embed/wWymdnwuEns", start: 1432, end: 1458 },
-            { url: "https://www.youtube.com/embed/wWymdnwuEns", start: 1468, end: 1520 },
-            { url: "https://www.youtube.com/embed/wWymdnwuEns", start: 1593, end: 1626 },
-            { url: "https://www.youtube.com/embed/wWymdnwuEns", start: 1940, end: 2031 },
+            { id: "wWymdnwuEns", start: 7, end: 26 },
+            { id: "wWymdnwuEns", start: 28, end: 72 },
+            { id: "wWymdnwuEns", start: 90, end: 156 },
+            { id: "wWymdnwuEns", start: 170, end: 274 },
+            { id: "wWymdnwuEns", start: 293, end: 507 },
+            { id: "wWymdnwuEns", start: 685, end: 733 },
+            { id: "wWymdnwuEns", start: 899, end: 926 },
+            { id: "wWymdnwuEns", start: 927, end: 970 },
+            { id: "wWymdnwuEns", start: 970, end: 1000 },
+            { id: "wWymdnwuEns", start: 1020, end: 1080 },
+            { id: "wWymdnwuEns", start: 1080, end: 1113 },
+            { id: "wWymdnwuEns", start: 1250, end: 1275 },
+            { id: "wWymdnwuEns", start: 1432, end: 1458 },
+            { id: "wWymdnwuEns", start: 1468, end: 1520 },
+            { id: "wWymdnwuEns", start: 1593, end: 1626 },
+            { id: "wWymdnwuEns", start: 1940, end: 2031 },
 
 
             // =====================================================
@@ -238,47 +256,184 @@
             // https://www.youtube.com/watch?v=vo379QxPNko
             // =====================================================
 
-            { url: "https://www.youtube.com/embed/vo379QxPNko", start: 10, end: 200 },
-            { url: "https://www.youtube.com/embed/vo379QxPNko", start: 233, end: 272 },
-            { url: "https://www.youtube.com/embed/vo379QxPNko", start: 443, end: 488 },
-            { url: "https://www.youtube.com/embed/vo379QxPNko", start: 604, end: 610 },
-            { url: "https://www.youtube.com/embed/vo379QxPNko", start: 615, end: 758 },
-            { url: "https://www.youtube.com/embed/vo379QxPNko", start: 759, end: 780 },
-            { url: "https://www.youtube.com/embed/vo379QxPNko", start: 837, end: 852 },
-            { url: "https://www.youtube.com/embed/vo379QxPNko", start: 1037, end: 1058 },
-            { url: "https://www.youtube.com/embed/vo379QxPNko", start: 1316, end: 1381 },
-            { url: "https://www.youtube.com/embed/vo379QxPNko", start: 1644, end: 1672 },
-            { url: "https://www.youtube.com/embed/vo379QxPNko", start: 1767, end: 1785 },
-            { url: "https://www.youtube.com/embed/vo379QxPNko", start: 1874, end: 1948 },
-            { url: "https://www.youtube.com/embed/vo379QxPNko", start: 1966, end: 1980 },
-            { url: "https://www.youtube.com/embed/vo379QxPNko", start: 2103, end: 2143 },
-            { url: "https://www.youtube.com/embed/vo379QxPNko", start: 2152, end: 2234 },
-            { url: "https://www.youtube.com/embed/vo379QxPNko", start: 2234, end: 2353 },
-            { url: "https://www.youtube.com/embed/vo379QxPNko", start: 2353, end: 2417 },
-            { url: "https://www.youtube.com/embed/vo379QxPNko", start: 2434, end: 2457 }
+            { id: "vo379QxPNko", start: 10, end: 200 },
+            { id: "vo379QxPNko", start: 233, end: 272 },
+            { id: "vo379QxPNko", start: 443, end: 488 },
+            { id: "vo379QxPNko", start: 604, end: 610 },
+            { id: "vo379QxPNko", start: 615, end: 758 },
+            { id: "vo379QxPNko", start: 759, end: 780 },
+            { id: "vo379QxPNko", start: 837, end: 852 },
+            { id: "vo379QxPNko", start: 1037, end: 1058 },
+            { id: "vo379QxPNko", start: 1316, end: 1381 },
+            { id: "vo379QxPNko", start: 1644, end: 1672 },
+            { id: "vo379QxPNko", start: 1767, end: 1785 },
+            { id: "vo379QxPNko", start: 1874, end: 1948 },
+            { id: "vo379QxPNko", start: 1966, end: 1980 },
+            { id: "vo379QxPNko", start: 2103, end: 2143 },
+            { id: "vo379QxPNko", start: 2152, end: 2234 },
+            { id: "vo379QxPNko", start: 2234, end: 2353 },
+            { id: "vo379QxPNko", start: 2353, end: 2417 },
+            { id: "vo379QxPNko", start: 2434, end: 2457 }
 
         ];
 
+
+        let player = null;
+        let selectedVideo = null;
+        let stopTimer = null;
+
+
+        // =====================================================
+        // YouTube API ready
+        // =====================================================
+
+        function onYouTubeIframeAPIReady() {
+            // The player is created when the button is pressed.
+        }
+
+
+        // =====================================================
+        // Choose random clip
+        // =====================================================
 
         function chooseRandomVideo() {
 
             const randomIndex =
                 Math.floor(Math.random() * videos.length);
 
-            const selectedVideo = videos[randomIndex];
+            selectedVideo = videos[randomIndex];
 
-            const videoUrl =
-                selectedVideo.url +
-                "?start=" +
-                selectedVideo.start +
-                "&end=" +
-                selectedVideo.end;
+            // Clear previous timer
+            if (stopTimer) {
+                clearInterval(stopTimer);
+                stopTimer = null;
+            }
 
-            document.getElementById("result").innerHTML = `
-                <a href="${videoUrl}" target="_blank">
-                    ${videoUrl}
-                </a>
-            `;
+
+            // Show selected clip information
+            document.getElementById("clipInfo").innerText =
+                "Clip: " +
+                formatTime(selectedVideo.start) +
+                " - " +
+                formatTime(selectedVideo.end);
+
+
+            // Create player the first time
+            if (!player) {
+
+                player = new YT.Player("player", {
+
+                    videoId: getVideoId(selectedVideo.url),
+
+                    playerVars: {
+                        autoplay: 1,
+                        controls: 1,
+                        playsinline: 1,
+                        rel: 0
+                    },
+
+                    events: {
+
+                        onReady: function(event) {
+
+                            event.target.loadVideoById({
+                                videoId: getVideoId(selectedVideo.url),
+                                startSeconds: selectedVideo.start
+                            });
+
+                            startStopTimer();
+                        },
+
+                        onStateChange: function(event) {
+
+                            if (
+                                event.data === YT.PlayerState.PLAYING
+                            ) {
+                                startStopTimer();
+                            }
+
+                        }
+
+                    }
+
+                });
+
+            } else {
+
+                player.loadVideoById({
+                    videoId: getVideoId(selectedVideo.url),
+                    startSeconds: selectedVideo.start
+                });
+
+                setTimeout(() => {
+                    startStopTimer();
+                }, 500);
+            }
+        }
+
+
+        // =====================================================
+        // Stop at exact end time
+        // =====================================================
+
+        function startStopTimer() {
+
+            if (stopTimer) {
+                clearInterval(stopTimer);
+            }
+
+            stopTimer = setInterval(() => {
+
+                if (!player || !selectedVideo) {
+                    return;
+                }
+
+                const currentTime =
+                    player.getCurrentTime();
+
+                if (
+                    currentTime >= selectedVideo.end
+                ) {
+
+                    player.pauseVideo();
+
+                    clearInterval(stopTimer);
+                    stopTimer = null;
+                }
+
+            }, 100);
+
+        }
+
+
+        // =====================================================
+        // Get YouTube video ID
+        // =====================================================
+
+        function getVideoId(url) {
+
+            return url.split("/embed/")[1];
+
+        }
+
+
+        // =====================================================
+        // Format time
+        // =====================================================
+
+        function formatTime(seconds) {
+
+            const minutes =
+                Math.floor(seconds / 60);
+
+            const remainingSeconds =
+                seconds % 60;
+
+            return (
+                minutes +
+                ":" +
+                String(remainingSeconds).padStart(2, "0")
+            );
         }
 
     </script>
