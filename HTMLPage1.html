@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Link</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 40px;
+        }
+
+        a {
+            color: #0000ee;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        #video {
+            display: none;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <a href="#" onclick="showVideo(); return false;">
+        https://youtu.be/iV2Syj2OwPQ?t=131
+    </a>
+
+    <div id="video">
+        <iframe width="560"
+                height="315"
+                src="https://www.youtube.com/embed/iV2Syj2OwPQ?start=131&end=136"
+                title="YouTube video player"
+                frameborder="0"
+                allow="autoplay; encrypted-media"
+                allowfullscreen>
+        </iframe>
+    </div>
+
+    <script>
+    function showVideo() {
+      document.getElementById("video").style.display = "block";
+    }
+    </script>
+
+</body>
+</html>
