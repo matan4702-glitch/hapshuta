@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Video Link</title>
+    <title>Random Video</title>
 
     <style>
         body {
@@ -11,14 +11,13 @@
             padding: 40px;
         }
 
-        a {
-            color: #0000ee;
-            text-decoration: underline;
+        button {
+            padding: 12px 24px;
+            font-size: 16px;
             cursor: pointer;
         }
 
-        #video {
-            display: none;
+        #result {
             margin-top: 20px;
         }
     </style>
@@ -26,25 +25,85 @@
 
 <body>
 
-    <a href="#" onclick="showVideo(); return false;">
-        https://youtu.be/iV2Syj2OwPQ?t=131
-    </a>
+    <button onclick="chooseRandomVideo()">
+        Choose Random Video
+    </button>
 
-    <div id="video">
-        <iframe width="560"
-                height="315"
-                src="https://www.youtube.com/embed/iV2Syj2OwPQ?start=131&end=136"
-                title="YouTube video player"
-                frameborder="0"
-                allow="autoplay; encrypted-media"
-                allowfullscreen>
-        </iframe>
-    </div>
+    <div id="result"></div>
 
     <script>
-    function showVideo() {
-      document.getElementById("video").style.display = "block";
-    }
+
+        const videos = [
+            {
+                url: "https://www.youtube.com/embed/iV2Syj2OwPQ",
+                start: 131,
+                end: 136
+            },
+            {
+                url: "https://www.youtube.com/embed/iV2Syj2OwPQ",
+                start: 103,
+                end: 119
+            },
+            {
+                url: "https://www.youtube.com/embed/iV2Syj2OwPQ",
+                start: 119,
+                end: 128
+            },
+            {
+                url: "https://www.youtube.com/embed/iV2Syj2OwPQ",
+                start: 185,
+                end: 192
+            },
+            {
+                url: "https://www.youtube.com/embed/iV2Syj2OwPQ",
+                start: 192,
+                end: 245
+            },
+            {
+                url: "https://www.youtube.com/embed/iV2Syj2OwPQ",
+                start: 245,
+                end: 273
+            },
+            {
+                url: "https://www.youtube.com/embed/iV2Syj2OwPQ",
+                start: 284,
+                end: 311
+            },
+            {
+                url: "https://www.youtube.com/embed/iV2Syj2OwPQ",
+                start: 312,
+                end: 323
+            },
+            {
+                url: "https://www.youtube.com/embed/iV2Syj2OwPQ",
+                start: 373,
+                end: 382
+            },
+            {
+                url: "https://www.youtube.com/embed/iV2Syj2OwPQ",
+                start: 406,
+                end: 415
+            }
+        ];
+
+        function chooseRandomVideo() {
+
+            const randomIndex = Math.floor(Math.random() * videos.length);
+
+            const selectedVideo = videos[randomIndex];
+
+            const videoUrl =
+                selectedVideo.url +
+                "?start=" + selectedVideo.start +
+                "&end=" + selectedVideo.end;
+
+            document.getElementById("result").innerHTML = `
+                    <a href="${videoUrl}" target="_blank">
+                        ${videoUrl}
+                    </a>
+                `;
+        }
+
     </script>
 
 </body>
