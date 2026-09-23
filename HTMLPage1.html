@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="he">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +8,7 @@
 
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: "Segoe UI", sans-serif;
             text-align: center;
             margin-top: 50px;
             min-height: 100vh;
@@ -18,21 +18,38 @@
 
         h1 {
             margin-bottom: 25px;
+            font-size: 32px;
         }
 
-        button {
-            padding: 12px 24px;
-            font-size: 18px;
-            cursor: pointer;
+        /* Hebrew message */
+        #message {
+            font-family: "Segoe UI", sans-serif;
+            font-size: 28px;
+            font-weight: 600;
+            margin-top: 25px;
+            direction: rtl;
+        }
+
+        /* Heart button */
+        .heart-button {
+            width: 90px;
+            height: 90px;
             border: none;
-            border-radius: 8px;
+            border-radius: 50%;
             background: white;
-            color: #6C2BD9;
-            font-weight: bold;
+            font-size: 45px;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
 
-        button:hover {
-            background: #f0eaff;
+        .heart-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+        }
+
+        .heart-button:active {
+            transform: scale(0.95);
         }
 
         #player-container {
@@ -48,18 +65,26 @@
 
         #clipInfo {
             margin-top: 15px;
-            font-size: 16px;
+            font-size: 20px;
+            font-weight: 500;
         }
     </style>
 </head>
 
 <body>
 
-    <h1>נגוש שלי בשבילי את לא פשוטה</h1>
+    <h1>Random YouTube Clip</h1>
 
-   <button class="heart-button" onclick="chooseRandomVideo()" aria-label="Choose Random Video">
-    ❤️
-</button>
+    <button
+        class="heart-button"
+        onclick="chooseRandomVideo()"
+        aria-label="Choose Random Video">
+        ❤️
+    </button>
+
+    <div id="message">
+        נגוש שתמיד תחייכי כל החיים ❤️
+    </div>
 
     <div id="player-container">
         <div id="player"></div>
