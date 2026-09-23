@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Random YouTube Clip</title>
 
     <style>
@@ -10,12 +11,19 @@
             font-family: Arial, sans-serif;
             text-align: center;
             margin-top: 50px;
+            background: #f5f5f5;
+        }
+
+        h1 {
+            margin-bottom: 25px;
         }
 
         button {
             padding: 12px 24px;
             font-size: 18px;
             cursor: pointer;
+            border: none;
+            border-radius: 8px;
         }
 
         #player-container {
@@ -51,18 +59,17 @@
     <div id="clipInfo"></div>
 
 
-    <!-- YouTube IFrame API -->
     <script src="https://www.youtube.com/iframe_api"></script>
 
     <script>
 
+        // =========================
+        // ALL CLIPS
+        // =========================
+
         const videos = [
 
-            // =====================================================
             // VIDEO 1
-            // https://www.youtube.com/watch?v=iV2Syj2OwPQ
-            // =====================================================
-
             { id: "iV2Syj2OwPQ", start: 93, end: 120 },
             { id: "iV2Syj2OwPQ", start: 103, end: 119 },
             { id: "iV2Syj2OwPQ", start: 119, end: 128 },
@@ -89,11 +96,7 @@
             { id: "iV2Syj2OwPQ", start: 1586, end: 1625 },
 
 
-            // =====================================================
             // VIDEO 2
-            // https://www.youtube.com/watch?v=3ay6qbpZRUA
-            // =====================================================
-
             { id: "3ay6qbpZRUA", start: 227, end: 237 },
             { id: "3ay6qbpZRUA", start: 266, end: 293 },
             { id: "3ay6qbpZRUA", start: 647, end: 668 },
@@ -107,11 +110,7 @@
             { id: "3ay6qbpZRUA", start: 1755, end: 1770 },
 
 
-            // =====================================================
             // VIDEO 3
-            // https://www.youtube.com/watch?v=zTenMqEixVo
-            // =====================================================
-
             { id: "zTenMqEixVo", start: 60, end: 75 },
             { id: "zTenMqEixVo", start: 91, end: 100 },
             { id: "zTenMqEixVo", start: 100, end: 109 },
@@ -139,11 +138,7 @@
             { id: "zTenMqEixVo", start: 1784, end: 1811 },
 
 
-            // =====================================================
             // VIDEO 4
-            // https://www.youtube.com/watch?v=oRFeZUO5GVw
-            // =====================================================
-
             { id: "oRFeZUO5GVw", start: 24, end: 121 },
             { id: "oRFeZUO5GVw", start: 170, end: 244 },
             { id: "oRFeZUO5GVw", start: 419, end: 439 },
@@ -167,11 +162,7 @@
             { id: "oRFeZUO5GVw", start: 1782, end: 1813 },
 
 
-            // =====================================================
             // VIDEO 5
-            // https://www.youtube.com/watch?v=sVVCteW9Z8g
-            // =====================================================
-
             { id: "sVVCteW9Z8g", start: 60, end: 79 },
             { id: "sVVCteW9Z8g", start: 102, end: 142 },
             { id: "sVVCteW9Z8g", start: 163, end: 193 },
@@ -188,11 +179,7 @@
             { id: "sVVCteW9Z8g", start: 1778, end: 1808 },
 
 
-            // =====================================================
             // VIDEO 6
-            // https://www.youtube.com/watch?v=meTc4AmbZ6E
-            // =====================================================
-
             { id: "meTc4AmbZ6E", start: 8, end: 38 },
             { id: "meTc4AmbZ6E", start: 65, end: 185 },
             { id: "meTc4AmbZ6E", start: 191, end: 246 },
@@ -213,11 +200,7 @@
             { id: "meTc4AmbZ6E", start: 1733, end: 1785 },
 
 
-            // =====================================================
             // VIDEO 7
-            // https://www.youtube.com/watch?v=_1KUmupf4zY
-            // =====================================================
-
             { id: "_1KUmupf4zY", start: 5, end: 60 },
             { id: "_1KUmupf4zY", start: 89, end: 191 },
             { id: "_1KUmupf4zY", start: 808, end: 882 },
@@ -228,11 +211,7 @@
             { id: "_1KUmupf4zY", start: 1278, end: 1443 },
 
 
-            // =====================================================
             // VIDEO 8
-            // https://www.youtube.com/watch?v=wWymdnwuEns
-            // =====================================================
-
             { id: "wWymdnwuEns", start: 7, end: 26 },
             { id: "wWymdnwuEns", start: 28, end: 72 },
             { id: "wWymdnwuEns", start: 90, end: 156 },
@@ -251,11 +230,7 @@
             { id: "wWymdnwuEns", start: 1940, end: 2031 },
 
 
-            // =====================================================
             // VIDEO 9
-            // https://www.youtube.com/watch?v=vo379QxPNko
-            // =====================================================
-
             { id: "vo379QxPNko", start: 10, end: 200 },
             { id: "vo379QxPNko", start: 233, end: 272 },
             { id: "vo379QxPNko", start: 443, end: 488 },
@@ -274,43 +249,51 @@
             { id: "vo379QxPNko", start: 2234, end: 2353 },
             { id: "vo379QxPNko", start: 2353, end: 2417 },
             { id: "vo379QxPNko", start: 2434, end: 2457 }
-
         ];
 
+
+        // =========================
+        // YOUTUBE PLAYER
+        // =========================
 
         let player = null;
         let selectedVideo = null;
         let stopTimer = null;
+        let youtubeReady = false;
 
 
-        // =====================================================
-        // YouTube API ready
-        // =====================================================
-
+        // This function is automatically called
+        // when the YouTube API finishes loading.
         function onYouTubeIframeAPIReady() {
-            // The player is created when the button is pressed.
+            youtubeReady = true;
         }
 
 
-        // =====================================================
-        // Choose random clip
-        // =====================================================
+        // =========================
+        // CHOOSE RANDOM CLIP
+        // =========================
 
         function chooseRandomVideo() {
+
+            if (!youtubeReady) {
+                alert("YouTube player is still loading. Please try again.");
+                return;
+            }
 
             const randomIndex =
                 Math.floor(Math.random() * videos.length);
 
             selectedVideo = videos[randomIndex];
 
-            // Clear previous timer
+
+            // Stop previous timer
             if (stopTimer) {
                 clearInterval(stopTimer);
                 stopTimer = null;
             }
 
 
-            // Show selected clip information
+            // Display clip information
             document.getElementById("clipInfo").innerText =
                 "Clip: " +
                 formatTime(selectedVideo.start) +
@@ -318,12 +301,15 @@
                 formatTime(selectedVideo.end);
 
 
-            // Create player the first time
+            // =========================
+            // FIRST TIME
+            // =========================
+
             if (!player) {
 
                 player = new YT.Player("player", {
 
-                    videoId: getVideoId(selectedVideo.url),
+                    videoId: selectedVideo.id,
 
                     playerVars: {
                         autoplay: 1,
@@ -337,44 +323,54 @@
                         onReady: function(event) {
 
                             event.target.loadVideoById({
-                                videoId: getVideoId(selectedVideo.url),
+                                videoId: selectedVideo.id,
                                 startSeconds: selectedVideo.start
                             });
 
                             startStopTimer();
                         },
 
+
                         onStateChange: function(event) {
 
                             if (
-                                event.data === YT.PlayerState.PLAYING
+                                event.data ===
+                                YT.PlayerState.PLAYING
                             ) {
                                 startStopTimer();
                             }
-
                         }
-
                     }
-
                 });
 
-            } else {
+            }
+
+            // =========================
+            // PLAYER ALREADY EXISTS
+            // =========================
+
+            else {
 
                 player.loadVideoById({
-                    videoId: getVideoId(selectedVideo.url),
+
+                    videoId: selectedVideo.id,
+
                     startSeconds: selectedVideo.start
                 });
 
-                setTimeout(() => {
+
+                setTimeout(function() {
+
                     startStopTimer();
+
                 }, 500);
             }
         }
 
 
-        // =====================================================
-        // Stop at exact end time
-        // =====================================================
+        // =========================
+        // STOP AT END TIME
+        // =========================
 
         function startStopTimer() {
 
@@ -382,44 +378,37 @@
                 clearInterval(stopTimer);
             }
 
-            stopTimer = setInterval(() => {
+
+            stopTimer = setInterval(function() {
 
                 if (!player || !selectedVideo) {
                     return;
                 }
 
+
                 const currentTime =
                     player.getCurrentTime();
 
+
                 if (
-                    currentTime >= selectedVideo.end
+                    currentTime >=
+                    selectedVideo.end
                 ) {
 
                     player.pauseVideo();
 
                     clearInterval(stopTimer);
+
                     stopTimer = null;
                 }
 
             }, 100);
-
         }
 
 
-        // =====================================================
-        // Get YouTube video ID
-        // =====================================================
-
-        function getVideoId(url) {
-
-            return url.split("/embed/")[1];
-
-        }
-
-
-        // =====================================================
-        // Format time
-        // =====================================================
+        // =========================
+        // FORMAT TIME
+        // =========================
 
         function formatTime(seconds) {
 
@@ -429,10 +418,12 @@
             const remainingSeconds =
                 seconds % 60;
 
+
             return (
                 minutes +
                 ":" +
-                String(remainingSeconds).padStart(2, "0")
+                String(remainingSeconds)
+                    .padStart(2, "0")
             );
         }
 
